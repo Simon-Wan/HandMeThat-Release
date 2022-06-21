@@ -227,7 +227,6 @@ def main():
     assert jericho.__version__.startswith(
         "3"), "This code is designed to be run with Jericho version >= 3.0.0."
     args = parse_args()
-    # args.rom_path = r'/data/vision/billf/scratch/wanym/HandMeThat-Release/data/HandMeThat_with_expert_demonstration'
     print(args)
     print("device", device)
     print(args.model)

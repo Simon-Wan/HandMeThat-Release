@@ -1,4 +1,5 @@
 
+# base agent for random, heuristic, and Seq2Seq models
 class BaseAgent:
     def __init__(self):
         self.score = 0

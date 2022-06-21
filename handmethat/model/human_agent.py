@@ -1,16 +1,17 @@
-import numpy as np
 from handmethat.model.base_agent import BaseAgent
 
 
-class RandomAgent(BaseAgent):
+class HumanAgent(BaseAgent):
     def __init__(self):
-        super(RandomAgent, self).__init__()
+        super(HumanAgent, self).__init__()
 
     def act(self, ob, reward, done, info):
         self.score = info['score']
         self.moves = info['moves']
         self.question_cost = info['question_cost']
-        action = np.random.choice(info['valid'])
+        # print(ob)
+        # print(info)
+        action = input()
         return action
 
     def reset(self, env=None):

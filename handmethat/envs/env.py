@@ -144,6 +144,7 @@ class HMTEnv:
         return obs
 
     def interact(self, action, fully):
+        import ipdb; ipdb.set_trace()
         action = action.replace('.', ' ')
         action = action.replace(',', ' ')
         action = action.replace(' # ', '#')
@@ -158,6 +159,7 @@ class HMTEnv:
         reward = -1
         if not words:
             obs = 'I cannot understand.'
+            return obs, reward, done
         for idx, word in enumerate(words):
             if '#' not in word:
                 if word in self.abbr_obj_names.keys():

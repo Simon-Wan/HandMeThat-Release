@@ -26,7 +26,6 @@ import utils.ngram as Ngram
 from handmethat.envs.env import HMTEnv
 from handmethat.envs.jericho_env import HMTJerichoEnv
 
-# device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
 
 
 class offlineDrrnTrainer(Trainer):
