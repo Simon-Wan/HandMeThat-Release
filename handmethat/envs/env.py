@@ -1,6 +1,6 @@
 from handmethat.envs.robot_actions import *
 from handmethat.envs.robot_space import *
-import hacl.pdsketch as pds
+import pdsketch as pds
 
 DOMAIN_FILE = '/data/vision/billf/scratch/wanym/XTX/quest_interface/robot_domain.pddl'     # todo
 DOMAIN = pds.load_domain_file(DOMAIN_FILE)

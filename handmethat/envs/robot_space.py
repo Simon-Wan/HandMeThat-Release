@@ -1,5 +1,5 @@
 import json
-import hacl.pdsketch as pds
+import pdsketch as pds
 
 ACTION_ARGS = {
     'robot-move': ['robot', 'location', 'location'],
@@ -49,7 +49,7 @@ def define_robot_space(object_dict, domain):
     predicates.append(ctx.type_human('h'))
 
     ctx.define_predicates(predicates)
-    translator = pds.strips.StripsTranslator(domain, use_string_name=True)
+    translator = pds.strips.GStripsTranslator(domain, use_string_name=True)
     rel_types = {'LOCATION': [], 'RECEPTACLE': [], 'FOOD': [], 'TOOL': [], 'THING': []}
     for obj in object_dict.keys():
         rel_types[object_dict[obj]['class']].append(obj)
