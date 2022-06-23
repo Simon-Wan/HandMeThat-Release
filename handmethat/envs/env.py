@@ -1,8 +1,9 @@
 from handmethat.envs.robot_actions import *
 from handmethat.envs.robot_space import *
 import pdsketch as pds
+import os.path as osp
 
-DOMAIN_FILE = '/data/vision/billf/scratch/wanym/XTX/quest_interface/robot_domain.pddl'     # todo
+DOMAIN_FILE = osp.join(osp.dirname(__file__), 'robot_domain.pddl')
 DOMAIN = pds.load_domain_file(DOMAIN_FILE)
 
 

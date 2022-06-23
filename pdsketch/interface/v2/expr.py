@@ -75,9 +75,6 @@ class FeatureDef(FunctionDef):
         self.static = False
         self._check_arguments_cacheable()
 
-        from .ao_discretization import AOFeatureCodebook
-        self.ao_discretization: Optional[AOFeatureCodebook] = None  # for AODiscretization
-
     def set_group(self, group: str):
         self.group = group
 

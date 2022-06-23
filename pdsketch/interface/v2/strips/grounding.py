@@ -188,8 +188,7 @@ class GStripsTranslatorBase(object):
     ) -> GStripsTask:
         with jacinle.cond_with(jacinle.time('compile_task::actions'), verbose):
             if actions is None:
-                from pdsketch.interface.v2.planner.optimistic_planner import generate_all_partially_grounded_actions
-                actions = generate_all_partially_grounded_actions(self.domain, state, filter_static=True)
+                raise ValueError('actions is required for this standalone version of pdsketch.')
 
         with jacinle.cond_with(jacinle.time('compile_task::state'), verbose):
             strips_state = self.compile_state(state)
