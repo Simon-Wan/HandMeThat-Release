@@ -12,7 +12,7 @@ import argparse
 def quickstart():
     step_limit = 40
     dataset = './data/HandMeThat_with_expert_demonstration'
-    eval_env = HMTJerichoEnv(dataset, split='test', fully=False, step_limit=step_limit, get_valid=True)
+    eval_env = HMTJerichoEnv(dataset, split='test', fully=False, step_limit=step_limit)
     obs, info = eval_env.reset()
     print(obs.replace('. ', '.\n'))
     for _ in range(step_limit):

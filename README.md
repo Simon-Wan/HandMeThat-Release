@@ -8,15 +8,15 @@ This is the code used to train and evaluate agents on the HandMeThat dataset.
 
 
 **[HandMeThat: Human-Robot Communication in Physical and Social Environments
-](http://nscl.csail.mit.edu/data/papers/2019ICLR-NSCL.pdf)**
-<br />
-[Yanming Wan](https://sites.google.com/view/wanyanming), 
-[Jiayuan Mao](http://jiayuanm.com), and
+](https://openreview.net/pdf?id=nUTemM6v9sv)**
+
+[Yanming Wan*](https://sites.google.com/view/wanyanming), 
+[Jiayuan Mao*](http://jiayuanm.com), and
 [Joshua B. Tenenbaum](https://web.mit.edu/cocosci/josh.html)
 
 [[Paper]](https://openreview.net/pdf?id=nUTemM6v9sv)
 [[Project Page]](https://sites.google.com/view/hand-me-that/)
-
+(* indicates equal contributions.)
 
 ## Prerequisites
 
@@ -68,7 +68,7 @@ from handmethat.envs.jericho_env import HMTJerichoEnv
 import numpy as np
 step_limit = 40
 dataset = './data/HandMeThat_with_expert_demonstration'
-eval_env = HMTJerichoEnv(dataset, split='test', fully=False, step_limit=step_limit, get_valid=True)
+eval_env = HMTJerichoEnv(dataset, split='test', fully=False, step_limit=step_limit)
 obs, info = eval_env.reset()
 print(obs.replace('. ', '.\n'))
 for _ in range(step_limit):
