@@ -42,7 +42,10 @@ class HMTEnv:
         done = False
         if action_str == 'help':
             obs = self.help()
-        elif action_str == 'look':
+        elif action_str == 'stop':
+            obs = 'You stop the game.\n'
+            done = True
+        elif action_str == 'look' or action_str == 'examine':
             obs = self.get_look(fully=self.fully)
         elif action_str == 'inventory':
             obs = self.get_inventory()
@@ -145,7 +148,7 @@ class HMTEnv:
         return obs
 
     def interact(self, action, fully):
-        import ipdb; ipdb.set_trace()
+        # import ipdb; ipdb.set_trace()
         action = action.replace('.', ' ')
         action = action.replace(',', ' ')
         action = action.replace(' # ', '#')
@@ -333,6 +336,9 @@ class HMTEnv:
         obs = 'In the room, there is '
         for loc in self.locations:
             if loc == 'floor':
+                continue
+            if loc == 'h':
+                obs += 'the human, '
                 continue
             obs += self.obj_name_and_article[loc]['article'] + ' ' + loc + ', '
         obs = obs[:-2] + '.\n'

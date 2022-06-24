@@ -263,7 +263,9 @@ def main():
                               start_from_reward=args.start_from_reward,
                               start_from_wt=args.start_from_wt,
                               log=log)
-
+    MODEL_DIR = os.path.join(args.save_path, args.model, args.observability)
+    if not os.path.exists(MODEL_DIR):
+        os.makedirs(MODEL_DIR)
     # Setup rl model
     if args.model_name == defs.DRRN:
         assert args.use_action_model == 0, "'use_action_model' needs to be OFF"

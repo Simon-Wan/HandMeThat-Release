@@ -47,6 +47,9 @@ def load_config():
 
 def main():
     config, args = load_config()
+    MODEL_DIR = os.path.join(args.save_path, args.model, args.observability)
+    if not os.path.exists(MODEL_DIR):
+        os.makedirs(MODEL_DIR)
     train(config, args)
 
 

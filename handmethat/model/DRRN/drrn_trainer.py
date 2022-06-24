@@ -236,6 +236,7 @@ class DrrnTrainer(Trainer):
 
         # Save model weights etc.
         MODEL_DIR = os.path.join(self.args.save_path, self.args.model, self.args.observability)
+
         if step % self.checkpoint_freq == 0:
             self.agent.save(int(step / self.checkpoint_freq), MODEL_DIR)
 

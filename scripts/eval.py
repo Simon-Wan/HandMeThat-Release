@@ -1,5 +1,4 @@
-# from utils.env import QuestJerichoEnv
-# from quest_interface.heuristic_agents import RandomAgent, RepeatAgent, HumanAgent, Seq2SeqAgent
+
 from handmethat.envs.jericho_env import HMTJerichoEnv
 from handmethat.envs.env import HMTEnv
 from handmethat.model.random.random_agent import RandomAgent
@@ -8,6 +7,25 @@ from handmethat.model.human_agent import HumanAgent
 import json
 import numpy as np
 import argparse
+
+
+def quickstart():
+    step_limit = 40
+    dataset = './data/HandMeThat_with_expert_demonstration'
+    eval_env = HMTJerichoEnv(dataset, split='test', fully=False, step_limit=step_limit, get_valid=True)
+    obs, info = eval_env.reset()
+    print(obs.replace('. ', '.\n'))
+    for _ in range(step_limit):
+        action = input('> ')
+        # uncomment the following part to get started with a random agent instead
+        # _ = input('Press [Enter] to continue')
+        # action = np.random.choice(info['valid'])
+        # print('Action:', action)
+        obs, reward, done, info = eval_env.step(action)
+        print(obs.replace('. ', '.\n'), '\n\n')
+        if done:
+            break
+    print('moves: {}, score: {}'.format(info['moves'], info['score']))
 
 
 def evaluate(agent, fully, num=None, level=None):
@@ -33,7 +51,7 @@ def evaluate(agent, fully, num=None, level=None):
         print('Current task file:', eval_env.json_path)
 
         obs, info = eval_env.reset()
-        print(obs)
+        print(obs.replace('. ', '.\n'))
 
         done = False
         reward = 0
@@ -44,7 +62,7 @@ def evaluate(agent, fully, num=None, level=None):
             actions.append(action)
             obs, reward, done, info = eval_env.step(action)
             print('Action:', action)
-            print('Effect:', obs)
+            print('Effect:', obs.replace('. ', '.\n'))
             # import ipdb; ipdb.set_trace()
             if done:
                 break
