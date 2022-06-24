@@ -23,13 +23,13 @@ This is the code used to train and evaluate agents on the HandMeThat dataset.
 ### Install Source
 Clone this repository:
 ```bash
-git clone https://github.com/Simon-Wan/HandMeThat-Release --recursive
+git clone https://github.com/Simon-Wan/HandMeThat-Release
 ```
 
 Clone the third party repositories ([XTX](https://sites.google.com/princeton.edu/xtx), [ALFWorld](https://alfworld.github.io/)):
 ```bash
 git clone https://github.com/princeton-nlp/XTX.git
-git clone https://github.com/alfworld/alfworld.git alfworld
+git clone https://github.com/alfworld/alfworld.git
 ```
 Add the packages to your `PYTHONPATH` environment variable.
 ```bash
