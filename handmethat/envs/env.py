@@ -9,7 +9,6 @@ DOMAIN = pds.load_domain_file(DOMAIN_FILE)
 
 class HMTEnv:
     def __init__(self, json_file, fully):
-        # import ipdb; ipdb.set_trace()
         self.game, self.demo_actions = load_from_json(json_file)
         self.object_dict = self.game.current_object_dict.copy()    # unchanged dict
         self.meaning = self.game.get_meaning()

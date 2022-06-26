@@ -32,7 +32,6 @@ logging.getLogger().setLevel(logging.CRITICAL)
 
 def configure_logger(args):
     log_dir = args.output_dir
-    # import ipdb; ipdb.set_trace()
     type_strs = ["json", "stdout"]
     tb = logger.Logger(
         log_dir,
@@ -255,7 +254,7 @@ def main():
     else:
         raise Exception('Unknown observability!')
     eval_env = HMTJerichoEnv(args.data_path + '/' + args.data_dir_name,
-                             args.eval_split,        # todo
+                             args.eval_split,
                              fully=fully,
                              step_limit=args.env_step_limit,
                              get_valid=True,

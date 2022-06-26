@@ -41,11 +41,9 @@ def evaluate(agent, fully, num=None, level=None):
     if level:
         validate = [file for file in validate if level in file]
     validate = np.random.permutation(validate)
-    # import ipdb; ipdb.set_trace()
     if num:
         validate = validate[:num]
     for filename in validate:
-        # import ipdb; ipdb.set_trace()
         path = working_dir + dataset_name + '/' + filename
         eval_env = HMTJerichoEnv(path, None, fully, step_limit=step_limit, get_valid=True)
         print('Current task file:', eval_env.json_path)
@@ -63,7 +61,6 @@ def evaluate(agent, fully, num=None, level=None):
             obs, reward, done, info = eval_env.step(action)
             print('Action:', action)
             print('Effect:', obs.replace('. ', '.\n'))
-            # import ipdb; ipdb.set_trace()
             if done:
                 break
         if reward > 0:

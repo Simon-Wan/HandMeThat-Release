@@ -73,7 +73,6 @@ def main():
     else:
         raise Exception('Unknown observability!')
     level = args.level
-    # import ipdb; ipdb.set_trace()
     agent.eval()
     my_agent = Seq2SeqAgent(agent)
     with torch.no_grad():
@@ -109,9 +108,7 @@ def evaluate_for_seq2seq(args, agent, fully, level=None):
     if level:
         eval_files = [file for file in eval_files if level in file]
     eval_files = np.random.permutation(eval_files)
-    # import ipdb; ipdb.set_trace()
     for filename in eval_files:
-        # import ipdb; ipdb.set_trace()
         path = os.path.join(data_path, data_dir_name, filename)
         eval_env = HMTJerichoEnv(path, None, fully, step_limit=step_limit, get_valid=True)
         print(eval_env.json_path)

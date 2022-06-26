@@ -32,7 +32,6 @@ logging.getLogger().setLevel(logging.CRITICAL)
 
 def configure_logger(args):
     log_dir = args.output_dir
-    # import ipdb; ipdb.set_trace()
     type_strs = ["json", "stdout"]
     tb = logger.Logger(
         log_dir,

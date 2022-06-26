@@ -3,7 +3,7 @@
 This is the code used to train and evaluate agents on the HandMeThat dataset.
 
 <div align="center">
-  <img src="HandMeThat_pipeline.png" width="100%">
+  <img src="HandMeThat_detail.png" width="100%">
 </div>
 
 
@@ -90,6 +90,10 @@ Run `python main.py` to execute the quickstart code.
 This current release contains the basic training setting for Seq2Seq, DRRN, and offline-DRRN models. 
 The models can be evaluated on validation and test split.
 
+We tested each model on both fully- and partially-observable setting on all four hardness levels. 
+These experiment results are presented in the main paper and supplementary materials. 
+The hyperparameter we used are the default values in this released repository.
+
 ### DRRN / offline-DRRN
 
 To train the model (e.g., 'DRRN' with 'fully' observable setting):
@@ -99,7 +103,7 @@ python scripts/train_rl.py --model DRRN --observability fully
 
 To evaluate the model (e.g., validate) on specific hardness level (e.g., level1):
 ```bash
-python scripts/eval_rl.py --model DRRN --observability fully --level level1 --eval_split validate --memory_file memory_1 --weight_file weights_1
+python scripts/eval_rl.py --model DRRN --observability fully --level level1 --eval_split validate --memory_file memory_5 --weight_file weights_5
 ```
 
 Use `--model offlineDRRN` for offline-DRRN setting.
@@ -113,13 +117,13 @@ python scripts/train_seq.py --observability partially
 
 To evaluate the model (e.g., test) on specific hardness level (e.g., level1):
 ```bash
-python scripts/eval_seq.py --observability partially --level level1 --eval_split test --eval_model_name weights_5000.pt
+python scripts/eval_seq.py --observability partially --level level1 --eval_split test --eval_model_name weights_50000.pt
 ```
 
 ### Random Agent
 
 To evaluate the random agent:
 
-```
+```bash
 python scripts/eval.py --agent random --level level1 --eval_split test
 ```

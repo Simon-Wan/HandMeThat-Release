@@ -22,5 +22,4 @@ class Seq2SeqAgent(BaseAgent):
         return actions[0]
 
     def reset(self, env: HMTEnv):
-        # import ipdb; ipdb.set_trace()
         return

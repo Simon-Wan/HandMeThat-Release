@@ -104,29 +104,3 @@ def rel_analysis(candidates, relevant):
         else:
             result.append(rel)
     return result
-
-
-'''
-def ground_an_action(action_ops, name, arg):
-    for op in action_ops:
-        if op.name == name:
-            try:
-                strips_op = translator.compile_operator(op(*tuple(arg)), state, is_relaxed=False)
-                strips_op.compile()
-                return strips_op
-            except Exception as _:
-                return None
-    return None
-
-
-
-if __name__ == '__main__':
-    with open('../json_files/task0_0.json') as f:
-        json_str = json.load(f)
-    object_dict = json_str['current_object_dict']
-    domain, names, state, translator, rel_types, action_ops, strips_state = set_up_planning_env(object_dict)
-    name = 'robot-move'
-    arg = ['r', 'floor', 'cabinet']
-    op = ground_an_action(action_ops, name, arg)
-    print(op)
-'''

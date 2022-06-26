@@ -1,17 +1,8 @@
 import datetime
 import os
 import json
-import importlib
 import numpy as np
-import torch.cuda
-from tqdm import tqdm
-
-import sys
-
-import alfworld.agents.environment
-# import alfworld.agents.modules.generic as generic
 from alfworld.agents.agent import TextDAggerAgent
-from alfworld.agents.eval import evaluate_dagger, my_evaluate
 from alfworld.agents.modules.generic import HistoryScoreCache, EpisodicCountingMemory, ObjCentricEpisodicMemory
 
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
@@ -50,7 +41,6 @@ def train(config, args):
         json_str = json.load(f)
     train_files = json_str[2]['train']
     train_files = np.random.permutation(train_files)    # random permutation for input
-    # import ipdb; ipdb.set_trace()
     for file in train_files:
         with open(args.data_path + '/' + args.data_dir_name + '/' + file, 'r') as f:
             json_str = json.load(f)
@@ -70,10 +60,9 @@ def train(config, args):
                 action = actions[i]
                 trajectory.append([obs, task, None, action, None])
             agent.dagger_memory.push(trajectory)
-    # import ipdb; ipdb.set_trace()
+
     while True:
         print(episode_no, datetime.datetime.now())
-        # import ipdb; ipdb.set_trace()
         if episode_no > MAX_TRAIN_STEP:
             break
 

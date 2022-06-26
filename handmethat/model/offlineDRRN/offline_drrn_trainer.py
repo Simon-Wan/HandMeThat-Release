@@ -23,7 +23,6 @@ from utils.memory import Transition
 import utils.logger as logger
 import utils.ngram as Ngram
 
-from handmethat.envs.env import HMTEnv
 from handmethat.envs.jericho_env import HMTJerichoEnv
 
 
@@ -184,12 +183,10 @@ class offlineDrrnTrainer(Trainer):
         """
         start = time.time()
         max_score, max_eval, self.env_steps = 0, 0, 0
-        # import ipdb; ipdb.set_trace()
+
         obs, infos, states, valid_ids, transitions = self.setup_env(self.envs)
 
         for step in range(1, self.max_steps + 1):
-            # import ipdb; ipdb.set_trace()
-            # print(self.envs.get_cache_size())
             self.steps = step
             self.log("Step {}".format(step))
             action_ids, action_idxs, action_qvals = self.agent.act(states,
@@ -197,12 +194,11 @@ class offlineDrrnTrainer(Trainer):
                                                                    [info['valid'] for info in infos],
                                                                    sample=True)
 
-            # Get the actual next action string for each env
             action_strs = [
                 info['valid'][idx] for info, idx in zip(infos, action_idxs)
             ]
-            # import ipdb; ipdb.set_trace()
             # [only for offline
+            # Get the actual next action string for each env
             print('Original choice:', action_strs[0])
             for idx in range(8):
                 action = infos[idx]['next_expert_action']
@@ -221,7 +217,6 @@ class offlineDrrnTrainer(Trainer):
                            reverse=True), 1):
                 s += "{}){:.2f} {} ".format(idx, val.item(), act)
             self.log('Q-Values: {}'.format(s))
-            # import ipdb; ipdb.set_trace()
             # Update all envs
             infos, next_states, next_valids, max_score, obs = self.update_envs(
                 action_strs, action_ids, states, max_score, transitions, obs, infos)
@@ -288,7 +283,6 @@ class offlineDrrnTrainer(Trainer):
         eval_files = np.random.permutation(eval_files)
 
         for filename in eval_files:
-            # import ipdb; ipdb.set_trace()
             path = data_path + '/' + data_dir_name + '/' + filename
             eval_env = HMTJerichoEnv(path, None, fully, step_limit=step_limit, get_valid=True)
             print(eval_env.json_path)
@@ -296,9 +290,6 @@ class offlineDrrnTrainer(Trainer):
             eval_envs = VecEnv(1, self.eval_env)
             obs, infos, states, valid_ids, transitions = self.setup_env(eval_envs)
             for step in range(0, step_limit):
-                # print(self.envs.get_cache_size())
-                # self.log("Step {}".format(step))
-                # import ipdb; ipdb.set_trace()
                 with torch.no_grad():
                     action_ids, action_idxs, action_qvals = self.agent.act(states,
                                                                            valid_ids,
