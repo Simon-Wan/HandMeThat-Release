@@ -15,6 +15,7 @@ This is the code used to train and evaluate agents on the HandMeThat dataset.
 [Joshua B. Tenenbaum](https://web.mit.edu/cocosci/josh.html)
 
 [[Paper]](https://openreview.net/pdf?id=nUTemM6v9sv)
+[[Supplementary Material]](https://openreview.net/attachment?id=nUTemM6v9sv&name=supplementary_material)
 [[Project Page]](https://sites.google.com/view/hand-me-that/)
 (* indicates equal contributions.)
 
