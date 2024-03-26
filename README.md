@@ -1,5 +1,7 @@
 # HandMeThat-Release
 
+**THIS REPO IS DEPRECATED!** Please visit [https://github.com/Simon-Wan/HandMeThat/](https://github.com/Simon-Wan/HandMeThat/).
+
 This is the code used to train and evaluate agents on the HandMeThat dataset.
 
 <div align="center">
